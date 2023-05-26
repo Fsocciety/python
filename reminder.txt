@@ -1,1 +1,1 @@
-[{"title": "aaaa", "content": "ne znam", "priority": "1"}, {"title": "caa", "content": "sdsdds", "priority": "123"}, {"title": "pokositi travu", "content": "sutra u 2 popodne", "priority": "2"}, {"title": "bbbb", "content": "dasdasd", "priority": "3"}, {"title": "cccc", "content": "Moras", "priority": "7"}]
+[{"title": "asd", "content": "sad", "priority": "1"}, {"title": "caa", "content": "sdsdds", "priority": "123"}, {"title": "pokositi travu", "content": "sutra u 2 popodne", "priority": "2"}, {"title": "cccc", "content": "Moras", "priority": "7"}]
