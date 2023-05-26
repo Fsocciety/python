@@ -10,8 +10,9 @@ def chooseOptions():
         1. Create
         2. Read
         3. Delete
-        4. Sort by priority
-        5. Quit
+        4. Sort by priority asc
+        5. Search by priority
+        6. Quit
         """
         print(options)
         option = input("\nChoose option: ")
@@ -23,8 +24,10 @@ def chooseOptions():
         elif option == '3':
             delete()
         elif option == '4':
-            sort("prio")
+            sort()
         elif option == '5':
+            search()
+        elif option == '6':
             print("Quit")
             break
         else:
@@ -60,18 +63,27 @@ def delete():
         if remind['title'] == delete:
             del reminder[i]
             save(reminder)
+            return None
+    print(f"{delete} doesn't exist.")
+
+
+def search():
+    prio = input("Enter priority: ")
+    for remind in reminder:
+        if remind['priority'] == prio:
+            print(remind)
+            return
+    print(f"{prio} doesn't exist")
+
 
 def save(temp_reminder):
     with open('reminder.txt', 'w') as f:
         f.write(json.dumps(temp_reminder))
         
-def sort(active):
-    if active == 'read':
-        sorted_list = sorted(reminder, key=lambda x: x['title'])
-        save(sorted_list)
-    elif active == 'prio':
-        sorted_list = sorted(reminder, key=lambda x: x['priority'])
-        save(sorted_list)
-    
+def sort():
+    sorted_list = sorted(reminder, key=lambda x: x['priority'])
+    save(sorted_list)
+
+
 
 chooseOptions()
