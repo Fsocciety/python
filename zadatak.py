@@ -1,4 +1,11 @@
-dictionary = {'treba': ['trebati'], 'radi': ['raditi', 'rad']}
+dictionary = {
+    'treba': ['trebati'],
+    'radi': ['raditi', 'rad'],
+    'da': ['trebati'],
+    'aaaa': ['raditi', 'rad'],
+    'ggg': ['trebati'],
+    'fff': ['raditi', 'rad'],
+    }
 
 
 def chooseOptions():
@@ -45,11 +52,23 @@ def create():
 
 
 def read():
-    print("\n----------------------")
-    for word, meaning in dictionary.items():
-        print(f"{word} - {meaning}")
-    print("----------------------\n")
+    dictionary = sort()
+    word = input("Word to find(type 'NO' for all words): ")
+    word = word.lower()
+    
+    if word == 'no':
+        print("\n----------------------")
+        for word, meaning in dictionary.items():
+            print(f"{word} - {meaning}")
+        print("----------------------\n")
+    else:
+        if word in dictionary.keys():
+            print(f"{word} - {dictionary[word]}")
+        else:
+            print(f"\n{word} doesn't exist!\n")
 
+
+        
 
 def delete():
     opt = """
@@ -73,12 +92,19 @@ def update():
     
     if edit_word in dictionary.keys():
         new_meaning = input(f"New meaning for the word {edit_word}: ")
-        dictionary[edit_word].append(new_meaning)
-        print("--Dictionary updated successfuly--")
+        if new_meaning not in dictionary[edit_word]:
+            dictionary[edit_word].append(new_meaning)
+            print("--Dictionary updated successfuly--")
+        else:
+            print(f"\nMeaning {new_meaning} already added.\n")
     else:
-        print("    \nWord doesn't exist")
+        print("\nWord doesn't exist")
         update()
 
+def sort():
+    sorted_dict = sorted(dictionary.items())
+    sorted_dict = dict(sorted_dict)
+    return sorted_dict
 
 chooseOptions()
 
