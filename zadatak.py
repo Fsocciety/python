@@ -68,8 +68,6 @@ def read():
             print(f"\n{word} doesn't exist!\n")
 
 
-        
-
 def delete():
     opt = """
     1. Delete one word
@@ -100,6 +98,7 @@ def update():
     else:
         print("\nWord doesn't exist")
         update()
+
 
 def sort():
     sorted_dict = sorted(dictionary.items())
