@@ -18,10 +18,27 @@ def add(index, product, price):
 
 def hash_function(string):
     string.lower()
-    hash = (ord(string[0]) + 3) % 26
+    hash = (ord(string[0]) - 97) % 26
     return hash
+
+def read():
+    search = input("Search product: ")
+    product_index = hash_function(search)
+    product_index = int(product_index)
+    if products[product_index]:
+        for item in products[product_index]:
+            for key, value in item.items():
+                if key == search:
+                    print(f"{key}: ${value}")
+                else:
+                    print(f"{search.title()} doesn't exist!")
+    else:
+        print(f"{search.title()} doesn't exist!")
+
+
 
 while True:
     (product, price) = ask()
     index = hash_function(product)
     add(index, product, price)
+    read()
